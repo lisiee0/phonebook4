@@ -5,13 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.javaex.dao.PhoneDao;
+import com.javaex.dao.PhoneDao2;
 import com.javaex.vo.PhoneVo;
 
 @Controller
@@ -19,15 +16,16 @@ import com.javaex.vo.PhoneVo;
 public class PhoneController {
 	
 	@Autowired
-	private PhoneDao pd; 
+	private PhoneDao2 pd; 
 	
+	/*
 	@RequestMapping(value= "/writeForm", method= {RequestMethod.GET, RequestMethod.POST})
 	public String writeForm() {
 		System.out.println("PhoneController/writeForm()");
 		
 		return "writeForm";
 	}
-
+	
 	
 	@RequestMapping(value= "/write", method= {RequestMethod.GET,RequestMethod.POST})
 	public String write(@ModelAttribute PhoneVo vo) {		
@@ -37,7 +35,7 @@ public class PhoneController {
 		
 		return "redirect:/phone/list";
 	}
-	
+	*/
 	
 	@RequestMapping(value= "/list", method= {RequestMethod.GET, RequestMethod.POST})
 	public String list(Model model) {
@@ -52,7 +50,7 @@ public class PhoneController {
 		return "list";
 	}
 	
-	
+	/*
 	@RequestMapping("/delete")
 	public String delete(@RequestParam("id") int id) {
 		System.out.println("PhoneController/delete()");
@@ -83,4 +81,5 @@ public class PhoneController {
 		
 		return "redirect:/phone/list";	
 	}	
+	*/
 }

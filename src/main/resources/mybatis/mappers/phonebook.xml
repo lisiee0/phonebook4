@@ -22,5 +22,36 @@
 		values (seq_person_id.nextval, #{name}, #{hp}, #{company})
 	]]>
 	</insert>
-
+	
+	
+	<delete id= "delete" parameterType= "int">
+	<![CDATA[
+		delete from person
+		where    	person_id= #{personId}	
+	]]>
+	</delete>
+	
+	<select id= "selectOne" resultType="com.javaex.vo.PhoneVo">
+	<![CDATA[
+		select    person_id personId,
+         		  name, 
+         		  hp, 
+         		  company 
+		from      person 
+		where     person_id= #{personId}
+	]]>
+	</select>
+	
+	
+	<update id= "update" parameterType="com.javaex.vo.PhoneVo">
+	<![CDATA[
+		update  	person
+		set 		name= #{name},
+	   				hp= #{hp},
+ 	   				company= #{company}
+		where	    person_id= #{personId}
+	]]>
+	
+	</update>
+	
 </mapper>

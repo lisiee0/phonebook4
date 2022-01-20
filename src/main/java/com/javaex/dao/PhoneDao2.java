@@ -31,131 +31,25 @@ public class PhoneDao2 {
 		return sqlSession.insert("phonebook.insert", pv);
 	}
 	
-	/*
-
-	public void personInsert(PhoneVo pv) {
-		
-		this.getConnection();
-
-		try {
-			String query= "";
-			query += " insert into person ";
-			query += " values(seq_person_id.nextval, ?, ?, ?) ";
-		
-		    pstmt= conn.prepareStatement(query);
-		    
-		    pstmt.setString(1, pv.getName()); // name
-		    pstmt.setString(2, pv.getHp()); // hp
-		    pstmt.setString(3, pv.getCompany()); // company		   
-
-		    int count= pstmt.executeUpdate();	    
-		    		   	    
-		    System.out.println("["+count+"건 등록되었습니다.]");
-		        	    
-		} catch (SQLException e) {
-		    System.out.println("error:" + e);
-		} 
-		this.close();
+	
+	// 전화번호 삭제
+	public void personDelete(int id) {
+		sqlSession.delete("phonebook.delete", id);	
 	}
 	
+	// 수정폼(특정 데이터 가져오기)
+	public PhoneVo getPerson(int id) {
+		return sqlSession.selectOne("phonebook.selectOne", id);
+	}
 	
+	// 수정
 	public void personUpdate(PhoneVo pv) {
-		
-		this.getConnection();
-
-		try {
-			String query= "";
-			query += " update 	person ";
-			query += " set 		name= ?, ";
-			query += " 	   		hp= ?, ";
-			query += " 	   		company= ? ";
-			query += " where	person_id= ? ";
-			
-		    pstmt= conn.prepareStatement(query);
-		    
-		    pstmt.setString(1, pv.getName());
-		    pstmt.setString(2, pv.getHp());
-		    pstmt.setString(3, pv.getCompany());
-		    pstmt.setInt(4, pv.getPersonId());
-		    
-		    int count= pstmt.executeUpdate();
-		    
-		    System.out.println("["+count+"건 수정되었습니다.]");
-		    
-		} catch (SQLException e) {
-		    System.out.println("error:" + e);
-		} 
-		this.close();
+		sqlSession.update("phonebook.update", pv);
 	}
 	
 	
-	public void personDelete(int personId) {
-		
-		this.getConnection();
-
-		try {
-			String query= "";
-			query += " delete from person ";
-			query += " where	   person_id= ? ";
-			
-		    pstmt= conn.prepareStatement(query);
-		    
-		    pstmt.setInt(1, personId);
-		    
-		    int count= pstmt.executeUpdate();
-		    
-		    System.out.println("["+count+"건 삭제되었습니다.]");
-		    
-		} catch (SQLException e) {
-		    System.out.println("error:" + e);
-		}
-		this.close();
-	}
 	
-	
-	public List<PhoneVo> getPersonList() {
-		List<PhoneVo> pList= new ArrayList<PhoneVo>();
-		
-		this.getConnection();
-		
-		try {
-			String query= "";
-			query += " select   person_id, "; 
-			query += "          name, ";
-			query += "          hp, ";
-			query += "          company ";
-			query += " from     person ";
-
-			pstmt= conn.prepareStatement(query);
-			
-			rs= pstmt.executeQuery();
-
-            while(rs.next()) {           
-            	int personId= rs.getInt("person_id"); 
-            	String name= rs.getString("name");
-            	String hp= rs.getString("hp");
-            	String company= rs.getString("company");
-            	
-            	PhoneVo vo= new PhoneVo(personId, name, hp, company);
-            	pList.add(vo);
-            }
-
-		} catch (SQLException e) {
-		    System.out.println("error:" + e);
-		}	
-		this.close();
-		
-		return pList;
-	}
-	
-	public void printList() {			
-		System.out.println("<1.리스트>");
-		
-		for(PhoneVo pv: this.getPersonList()) {
-			pv.showInfo();
-		}
-	}
-	
+	/*
 	
 	public List<PhoneVo> personSearch(String search) {
 		List<PhoneVo> pList= new ArrayList<PhoneVo>();
@@ -201,42 +95,6 @@ public class PhoneDao2 {
 		return pList;
 	}
 	
-	public PhoneVo getPerson(int id) {
-		PhoneVo pv= null;
-		
-		this.getConnection();
-		
-		try {
-			String query= "";
-			query += " select   person_id, "; 
-			query += "          name, ";
-			query += "          hp, ";
-			query += "          company ";
-			query += " from     person ";
-			query += " where    person_id= ? ";
-
-			pstmt= conn.prepareStatement(query);
-			
-			pstmt.setInt(1, id);
-			
-			rs= pstmt.executeQuery();
-			
-			while(rs.next()) {           
-            	int personId= rs.getInt("person_id"); 
-            	String name= rs.getString("name");
-            	String hp= rs.getString("hp");
-            	String company= rs.getString("company");
-            	
-            	pv= new PhoneVo(personId, name, hp, company);
-            }
-
-		} catch (SQLException e) {
-		    System.out.println("error:" + e);
-		}	
-		this.close();
-
-		return pv;
-	}
 	*/
 }
 

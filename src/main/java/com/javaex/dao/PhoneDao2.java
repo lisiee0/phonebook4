@@ -19,40 +19,20 @@ public class PhoneDao2 {
 		
 	}
 	
+	// 리스트 가져오기
 	public List<PhoneVo> getPersonList() {
 		List<PhoneVo> pList= sqlSession.selectList("phonebook.selectList");
 		return pList;
 	}
 	
 	
+	// 전화번호 등록
+	public int personInsert(PhoneVo pv) {
+		return sqlSession.insert("phonebook.insert", pv);
+	}
+	
 	/*
-	
-	private void getConnection() {	
-		try {
-			conn = dataSource.getConnection();
-		} catch (SQLException e) {
-		    System.out.println("error:" + e);
-		}   
-	}
-	
-	
-	private void close() {
-	    try {
-	        if (rs != null) {
-	            rs.close();
-	        }                
-	        if (pstmt != null) {
-	            pstmt.close();
-	        }
-	        if (conn != null) {
-	            conn.close();
-	        }
-	    } catch (SQLException e) {
-	        System.out.println("error:" + e);
-	    }
-	}
-	
-	
+
 	public void personInsert(PhoneVo pv) {
 		
 		this.getConnection();

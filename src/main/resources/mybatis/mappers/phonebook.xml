@@ -6,7 +6,7 @@
 
 	<select id= "selectList" resultType="com.javaex.vo.PhoneVo">
     <![CDATA[
-        select   person_id,
+        select   person_id personId,
                  name, 
                  hp,
                  company
@@ -14,5 +14,14 @@
         order by person_id desc
      ]]>
 	</select>
+	
+	
+	<insert id= "insert" parameterType= "com.javaex.vo.PhoneVo">
+	<![CDATA[
+		insert into person
+		values (seq_person_id.nextval, #{name}, #{hp}, #{company})
+	]]>
+	
+	</insert>
 
 </mapper>

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -18,7 +19,7 @@ public class PhoneController {
 	@Autowired
 	private PhoneDao2 pd; 
 	
-	/*
+	
 	@RequestMapping(value= "/writeForm", method= {RequestMethod.GET, RequestMethod.POST})
 	public String writeForm() {
 		System.out.println("PhoneController/writeForm()");
@@ -35,7 +36,7 @@ public class PhoneController {
 		
 		return "redirect:/phone/list";
 	}
-	*/
+	
 	
 	@RequestMapping(value= "/list", method= {RequestMethod.GET, RequestMethod.POST})
 	public String list(Model model) {
@@ -43,6 +44,7 @@ public class PhoneController {
 		
 		// Dao에서 list 가져오기
 		List<PhoneVo> pList= pd.getPersonList();
+		System.out.println(pList.toString());
 		
 		// Controller --> DispatcherServlet 데이터 보내기 (model)
 		model.addAttribute("pl", pList);

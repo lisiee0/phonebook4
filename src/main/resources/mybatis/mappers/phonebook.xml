@@ -4,7 +4,7 @@
 
 <mapper namespace="phonebook">
 
-	<resultMap id= "resultMapPersonVo" type= "com.javaex.vo.PhoneVo">
+	<resultMap id= "resultMapPhoneVo" type= "com.javaex.vo.PhoneVo">
 		<result column= "person_id" property= "personId" />
 		<result column= "name" property= "name" />
 		<result column= "hp" property= "hp" />
@@ -12,7 +12,7 @@
 	</resultMap>
 
 
-	<select id="selectList" resultMap="resultMapPersonVo">
+	<select id="selectList" resultMap="resultMapPhoneVo">
     <![CDATA[
         select   person_id,
                  name, 

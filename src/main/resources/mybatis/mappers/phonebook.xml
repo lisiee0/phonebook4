@@ -23,14 +23,21 @@
      ]]>
 	</select>
 
-
+	<!--  
 	<insert id="insert" parameterType="com.javaex.vo.PhoneVo">
 	<![CDATA[
 		insert into person
 		values (seq_person_id.nextval, #{name}, #{hp}, #{company})
 	]]>
 	</insert>
-
+    -->
+    
+   	<insert id="insert" parameterType="map">
+	<![CDATA[
+		insert into person
+		values (seq_person_id.nextval, #{name}, #{hp}, #{company})
+	]]>
+	</insert>
 
 	<delete id="delete" parameterType="int">
 	<![CDATA[

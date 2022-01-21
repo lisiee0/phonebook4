@@ -37,13 +37,12 @@ public class PhoneController {
 		
 		return "redirect:/phone/list";
 	}
-	
+
 	
 	@RequestMapping(value= "/list", method= {RequestMethod.GET, RequestMethod.POST})
 	public String list(Model model) {
 		System.out.println("PhoneController/list()");
-		
-		// Dao에서 list 가져오기
+
 		List<PhoneVo> pList= pd.getPersonList();
 		System.out.println(pList.toString());
 		

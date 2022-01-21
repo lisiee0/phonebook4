@@ -1,6 +1,8 @@
 package com.javaex.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +27,32 @@ public class PhoneDao2 {
 		return pList;
 	}
 	
-	
+	/*
 	// 전화번호 등록
 	public int personInsert(PhoneVo pv) {
 		return sqlSession.insert("phonebook.insert", pv);
 	}
+	*/
+	
+	// Map 사용하기
+	public int personInsert(PhoneVo pv) {
+		System.out.println("PhoneController/write() 파라미터 여러개 받을때");
+		
+		String name= pv.getName();
+		String hp= pv.getHp();
+		String company= pv.getCompany();
+		
+		Map<String, String> personMap= new HashMap<String, String>();
+		personMap.put("name", name);
+		personMap.put("hp", hp);
+		personMap.put("company", company);
+		
+		System.out.println(personMap);
+		
+		
+		return sqlSession.insert("phonebook.insert", personMap);
+	}
+	
 	
 	
 	// 전화번호 삭제

@@ -1,8 +1,6 @@
 package com.javaex.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,14 +25,16 @@ public class PhoneDao2 {
 		return pList;
 	}
 	
-	/*
+	
 	// 전화번호 등록
 	public int personInsert(PhoneVo pv) {
 		return sqlSession.insert("phonebook.insert", pv);
 	}
-	*/
 	
+	
+	/*
 	// Map 사용하기
+	// 전화번호 등록
 	public int personInsert(PhoneVo pv) {
 		System.out.println("PhoneController/write() 파라미터 여러개 받을때");
 		
@@ -52,7 +52,7 @@ public class PhoneDao2 {
 		
 		return sqlSession.insert("phonebook.insert", personMap);
 	}
-	
+	*/
 	
 	
 	// 전화번호 삭제
@@ -60,10 +60,30 @@ public class PhoneDao2 {
 		sqlSession.delete("phonebook.delete", id);	
 	}
 	
+	
+	
 	// 수정폼(특정 데이터 가져오기)
 	public PhoneVo getPerson(int id) {
 		return sqlSession.selectOne("phonebook.selectOne", id);
 	}
+	
+	
+	/*
+	// Map 사용하기
+	// 수정폼(특정 데이터 가져오기)
+	public PhoneVo getPerson(int id) {
+		Map<String, Object> personMap= sqlSession.selectOne("phonebook.selectOne2", id);
+		System.out.println(personMap.keySet());
+		System.out.println(personMap);
+		
+		personMap.get("PERSON_ID");
+		personMap.get("NAME");
+		personMap.get("HP");
+		personMap.get("COMPANY");
+		
+		return null;
+	}
+	*/
 	
 	// 수정
 	public void personUpdate(PhoneVo pv) {

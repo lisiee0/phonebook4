@@ -23,21 +23,23 @@
      ]]>
 	</select>
 
-	<!--  
-	<insert id="insert" parameterType="com.javaex.vo.PhoneVo">
+	 
+	<insert id="insert" parameterType="PhoneVo">
 	<![CDATA[
 		insert into person
 		values (seq_person_id.nextval, #{name}, #{hp}, #{company})
 	]]>
 	</insert>
-    -->
     
+    
+   <!--  Map 사용하기
    	<insert id="insert" parameterType="map">
 	<![CDATA[
 		insert into person
 		values (seq_person_id.nextval, #{name}, #{hp}, #{company})
 	]]>
-	</insert>
+	</insert> -->
+
 
 	<delete id="delete" parameterType="int">
 	<![CDATA[
@@ -45,8 +47,10 @@
 		where    	person_id= #{personId}	
 	]]>
 	</delete>
-
-	<select id="selectOne" resultType="com.javaex.vo.PhoneVo">
+	
+	
+	  
+	<select id="selectOne" resultType="PhoneVo">
 	<![CDATA[
 		select    person_id personId,
          		  name, 
@@ -57,8 +61,21 @@
 	]]>
 	</select>
 
+	 
+	<!-- Map 사용하기
+	<select id="selectOne2" parameterType="int" resultType="map">
+	<![CDATA[
+		select    person_id,
+         		  name, 
+         		  hp, 
+         		  company 
+		from      person 
+		where     person_id= #{personId}
+	]]>
+	</select> -->
+	
 
-	<update id="update" parameterType="com.javaex.vo.PhoneVo">
+	<update id="update" parameterType="PhoneVo">
 	<![CDATA[
 		update  	person
 		set 		name= #{name},

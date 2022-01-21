@@ -59,7 +59,6 @@
  	   				company= #{company}
 		where	    person_id= #{personId}
 	]]>
-
 	</update>
 
 </mapper>
